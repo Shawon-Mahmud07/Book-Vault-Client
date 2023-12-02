@@ -6,7 +6,7 @@ module.exports = withMT({
   theme: {
     extend: {
       fontFamily: {
-        Inter: [" Inter", "sans-serif"],
+        Inter: ["Inter", "sans-serif"],
         cinzel: "'Cinzel', serif",
       },
     },

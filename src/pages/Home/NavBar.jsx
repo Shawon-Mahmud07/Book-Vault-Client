@@ -31,7 +31,7 @@ function NavList() {
     <ul className="my-2 text-white flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center  lg:gap-6">
       <Typography
         as="li"
-        className="p-1 text-lg md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+        className="p-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
         <NavLink
           to="/"
@@ -42,7 +42,7 @@ function NavList() {
       </Typography>
       <Typography
         as="li"
-        className="px-1 text-lg md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+        className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
         <NavLink to="/contact" className="flex items-center  transition-colors">
           CREATE STORE
@@ -50,7 +50,7 @@ function NavList() {
       </Typography>
       <Typography
         as="li"
-        className="px-1 text-lg md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+        className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
         <a href="#" className="flex items-center  transition-colors">
           DASHBOARD
@@ -58,7 +58,7 @@ function NavList() {
       </Typography>
       <Typography
         as="li"
-        className="px-1 text-lg md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+        className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
         <NavLink
           to="/menu"
@@ -88,7 +88,7 @@ function NavList() {
       )} */}
       <Avatar src={userImg} alt="avatar" withBorder={false} />
       <Button
-        className="block bg-[#FF7F56]  rounded-md  font-semibold text-base text-[#fff]"
+        className="block bg-[#FF7F56] py-1 lg:py-2 rounded-md  font-semibold text-base text-[#fff]"
         size="sm"
       >
         <span>Login</span>
@@ -114,7 +114,7 @@ const NavBar = () => {
         <Link to="/">
           <div className="flex gap-2 items-center text-white cursor-pointer">
             <img className="w-10 lg:w-12" src={logoImg} alt="" />
-            <h1 className="font-cinzel text-xl lg:text-3xl font-semibold">
+            <h1 className="font-cinzel text-2xl lg:text-3xl font-semibold">
               <span>Book</span> <span className="text-[#FF7F56]">Vault</span>
             </h1>
           </div>

@@ -10,7 +10,7 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 const BannerCard = () => {
   return (
-    <div className="w-8/12 lg:w-6/12 mx-auto">
+    <div className="w-10/12 md:w-8/12  lg:w-6/12 mx-auto">
       <Swiper
         effect={"cards"}
         grabCursor={true}

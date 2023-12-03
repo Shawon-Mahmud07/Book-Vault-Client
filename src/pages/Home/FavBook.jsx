@@ -21,11 +21,11 @@ const FavBook = () => {
             <span className="text-[#FF7F56]">Book Here!</span>
           </h2>
           <p className="mb-10 text-sm font-medium font-Inter lg:text:xl lg:text-left lg:w-5/6">
-            "Explore our diverse collection and find your next literary
+            &quot;Explore our diverse collection and find your next literary
             favorite! From gripping novels to timeless classics, discover a
             world of stories waiting for you.Your next literary escape awaits –
-            dive into the joy of reading with us!" Start your reading adventure
-            here."
+            dive into the joy of reading with us!&quot; Start your reading
+            adventure here.&quot;
           </p>
           {/* stats */}
           <div className="flex flex-col md:flex-row justify-between bg-gray-100 lg:bg-white    gap-6 lg:w-3/4 my-14">

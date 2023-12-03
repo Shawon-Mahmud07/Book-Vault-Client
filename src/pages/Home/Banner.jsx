@@ -25,9 +25,9 @@ const Banner = () => {
                   <span className="text-[#ff8055]">for the Best Prices</span>
                 </h2>
                 <p className="w-full text-center text-white  lg:text-left text-sm md:text-lg lg:w-10/12 mt-2">
-                  Find and read more books you'll love, and keep track of the
-                  books you want to read. Be part of the world's largest
-                  community of book lovers on Goodreads.
+                  Find and read more books you&apos;ll love, and keep track of
+                  the books you want to read. Be part of the world&apos;s
+                  largest community of book lovers on Book Valut.
                 </p>
               </div>
               {/* right side */}

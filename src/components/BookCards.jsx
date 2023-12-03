@@ -16,7 +16,7 @@ const BookCards = ({ headline, books }) => {
         {headline}
       </h2>
       {/* cards */}
-      <div className="mt-0 lg:mt-10 ">
+      <div data-aos="zoom-in" className="mt-0 lg:mt-10  ">
         <Swiper
           slidesPerView={2}
           spaceBetween={20}
@@ -41,11 +41,7 @@ const BookCards = ({ headline, books }) => {
           className="mySwiper"
         >
           {books.map((book, index) => (
-            <SwiperSlide
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              key={index}
-            >
+            <SwiperSlide key={index}>
               <Link>
                 <div>
                   <img src={book.imageURL} alt="" />

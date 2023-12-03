@@ -7,24 +7,26 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link, NavLink } from "react-router-dom";
-import React from "react";
+import { Link, NavLink, Navigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-toastify";
 
 function NavList() {
   const activeNav = " text-[#FF7F56]";
   const normalNav = "flex items-center  transition-colors";
-  // const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then(() => {
-  //       toast.success("Sign-out successful.");
-  //       Navigate("/login");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Sign-out successful.");
+        Navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <ul className="my-2 text-white flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center  lg:gap-6">
@@ -68,39 +70,32 @@ function NavList() {
         </NavLink>
       </Typography>
 
-      {/* {user ? (
+      {user && (
+        <div className="flex flex-col items-center">
+          <Avatar src={user.photoURL} alt="avatar" size="md" />
+          <p className="text-sm">{user.displayName}</p>
+        </div>
+      )}
+      {user ? (
         <Button
           onClick={handleLogOut}
-          className="hidden md:block bg-[#FF7F56]  rounded-md  font-semibold text-base text-[#fff]"
+          className="block bg-[#FF7F56] py-1 lg:py-2 rounded-md  font-semibold text-base text-[#fff]"
           size="sm"
         >
           <span>Log Out</span>
         </Button>
       ) : (
-        <Link to="/login">
-          <Button
-            className="block bg-[#FF7F56]  rounded-md  font-semibold text-base text-[#fff]"
-            size="sm"
-          >
-            <span>Login</span>
-          </Button>
-        </Link>
-      )} */}
-      <div className="flex flex-col items-center">
-        <Avatar
-          src="https://airproductionservice.com/wp-content/uploads/2021/05/Login.jpg"
-          alt="avatar"
-          size="md"
-        />
-        <p className="text-sm">Shawon Mahmud</p>
-      </div>
-
-      <Button
-        className="block bg-[#FF7F56] py-1 lg:py-2 rounded-md  font-semibold text-base text-[#fff]"
-        size="sm"
-      >
-        <span>Login</span>
-      </Button>
+        <>
+          <Link to="/login">
+            <Button
+              className="block bg-[#FF7F56] py-1 lg:py-2 rounded-md  font-semibold text-base text-[#fff]"
+              size="sm"
+            >
+              <span>Login</span>
+            </Button>
+          </Link>
+        </>
+      )}
     </ul>
   );
 }

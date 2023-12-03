@@ -1,7 +1,9 @@
 import bannerImg from "../../assets/img/banner.jpg";
 import BannerCard from "../../components/BannerCard";
+import useAos from "../../hooks/useAos";
 
 const Banner = () => {
+  useAos();
   const backgroundStyles = {
     backgroundImage: `url(${bannerImg})`,
     backgroundRepeat: "no-repeat",
@@ -16,7 +18,7 @@ const Banner = () => {
           <div className="w-11/12 py-10 md:py-12 h-auto lg:h-screen lg:w-10/12 mx-auto    ">
             <div className="flex w-full  flex-col-reverse lg:flex-row    justify-between items-center h-full lg:h-screen">
               {/* left side  */}
-              <div className="w-full lg:w-6/12 lg:ml-5    ">
+              <div data-aos="fade-right" className="w-full lg:w-6/12 lg:ml-5 ">
                 <h2 className="text-xl text-center lg:text-left md:text-4xl font-cinzel font-bold leading-snug ">
                   <span className="text-white">Buy and Sell Your Books</span>
                   <br />
@@ -29,7 +31,7 @@ const Banner = () => {
                 </p>
               </div>
               {/* right side */}
-              <div className=" w-6/12 mb-5  lg:mb-0">
+              <div data-aos="fade-left" className=" w-6/12 mb-5  lg:mb-0">
                 <BannerCard></BannerCard>
               </div>
             </div>

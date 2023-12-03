@@ -1,16 +1,21 @@
 import { Typography } from "@material-tailwind/react";
 
 import logoImg from "../../assets/img/favIcon.png";
+import useAos from "../../hooks/useAos";
 
 const currentYear = new Date().getFullYear();
 
 const Footer = () => {
+  useAos();
   return (
     <div>
       <footer className="relative w-full pt-6 lg:pt-0 text-white mt-16 lg:mt-32 bg-gradient-to-b from-[#1e1f27] to-[#380e16] ">
         <div className="w-full ">
           <div className="grid grid-cols-1 justify-between  md:grid-cols-3">
-            <div className="flex justify-center items-center ">
+            <div
+              data-aos="fade-up"
+              className="flex justify-center items-center "
+            >
               <div className="flex gap-2 items-center text-white cursor-pointer">
                 <img className="w-10 lg:w-16" src={logoImg} alt="" />
                 <h1 className="font-cinzel text-2xl lg:text-4xl font-semibold">
@@ -19,7 +24,7 @@ const Footer = () => {
                 </h1>
               </div>
             </div>
-            <div className="  py-10 lg:py-20 ">
+            <div data-aos="fade-up" className="  py-10 lg:py-20 ">
               <div className=" w-10/12 mx-auto lg:mx-0 flex justify-center lg:justify-end ">
                 <div className="max-w-sm text-center">
                   <h1 className="mb-6 text-2xl font-medium font-cinzel">
@@ -35,7 +40,10 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="  flex justify-end items-center ">
+            <div
+              data-aos="fade-up"
+              className="  flex justify-end items-center "
+            >
               <div className="  w-10/12 mx-auto lg:mx-0 flex justify-center lg:justify-start">
                 <div className=" max-w-sm mb-5 py-8  lg:py-20  text-center">
                   <h2 className="text-2xl  mb-6 font-medium font-cinzel">

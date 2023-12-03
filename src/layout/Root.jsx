@@ -9,7 +9,6 @@ const Root = () => {
   }, [pathname]);
   return (
     <div>
-      <Home></Home>
       <Outlet></Outlet>
     </div>
   );

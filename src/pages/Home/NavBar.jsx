@@ -1,11 +1,10 @@
-import userImg from "../../assets/img/Frame.png";
 import logoImg from "../../assets/img/favIcon.png";
 import {
   Collapse,
   Typography,
   IconButton,
-  Avatar,
   Button,
+  Avatar,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
@@ -61,7 +60,8 @@ function NavList() {
         className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
         <NavLink
-          to="/menu"
+          to="https://www.youtube.com/watch?v=RYRLxVfijpI"
+          target="_blank"
           className={({ isActive }) => (isActive ? activeNav : normalNav)}
         >
           WATCH DEMO
@@ -86,7 +86,15 @@ function NavList() {
           </Button>
         </Link>
       )} */}
-      <Avatar src={userImg} alt="avatar" withBorder={false} />
+      <div className="flex flex-col items-center">
+        <Avatar
+          src="https://airproductionservice.com/wp-content/uploads/2021/05/Login.jpg"
+          alt="avatar"
+          size="md"
+        />
+        <p className="text-sm">Shawon Mahmud</p>
+      </div>
+
       <Button
         className="block bg-[#FF7F56] py-1 lg:py-2 rounded-md  font-semibold text-base text-[#fff]"
         size="sm"
@@ -109,7 +117,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="lg:fixed w-full  z-10 px-6 py-3 bg-gradient-to-b from-[#1e1f27] to-[#380e16]   ">
+    <div className="lg:fixed w-full  z-10 px-6 py-5 lg:py-2 bg-gradient-to-b from-[#1e1f27] to-[#380e16]   ">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Link to="/">
           <div className="flex gap-2 items-center text-white cursor-pointer">

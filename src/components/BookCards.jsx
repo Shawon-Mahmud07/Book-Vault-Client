@@ -6,8 +6,10 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
+import useAos from "../hooks/useAos";
 
 const BookCards = ({ headline, books }) => {
+  useAos();
   return (
     <div className="my-12 px-4  lg:px-24">
       <h2 className="text-3xl lg:text-5xl text-center font-bold text-black my-5">
@@ -39,7 +41,11 @@ const BookCards = ({ headline, books }) => {
           className="mySwiper"
         >
           {books.map((book, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              key={index}
+            >
               <Link>
                 <div>
                   <img src={book.imageURL} alt="" />

@@ -1,16 +1,21 @@
 import FavBookImg from "../../assets/img/favoritebook.jpg";
+import useAos from "../../hooks/useAos";
 const FavBook = () => {
+  useAos();
   return (
     <div className="w-11/12 lg:w-10/12 mx-auto lg:my-20  ">
       <div className="flex flex-col lg:flex-row  justify-between items-center">
-        <div className="md:w-1/2">
+        <div data-aos="fade-down-right" className="md:w-1/2">
           <img
             src={FavBookImg}
             alt=""
             className="rounded md:w-10/12 lg:mx-0  mx-auto"
           />
         </div>
-        <div className="lg:w-1/2 w-full  text-center   space-y-6">
+        <div
+          data-aos="fade-down-left"
+          className="lg:w-1/2 w-full  text-center   space-y-6"
+        >
           <h2 className="text-2xl lg:text-4xl font-bold my-5 lg:w-3/4 leading-snug">
             Find Your Favorite{" "}
             <span className="text-[#FF7F56]">Book Here!</span>

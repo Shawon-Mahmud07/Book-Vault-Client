@@ -10,6 +10,7 @@ import CreateStore from "../pages/CreateStore";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import AddProduct from "../Dashboard/AddProduct";
 import UploadProduct from "../components/UploadProduct";
+import AllProduct from "../Dashboard/AllProduct";
 
 const router = createBrowserRouter([
   {
@@ -60,8 +61,8 @@ const router = createBrowserRouter([
         element: <UploadProduct></UploadProduct>,
       },
       {
-        path: "/admin/dashboard",
-        element: <></>,
+        path: "/admin/dashboard/all-product",
+        element: <AllProduct></AllProduct>,
       },
     ],
   },

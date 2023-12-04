@@ -18,7 +18,6 @@ function NavList() {
   const activeNav = " text-[#FF7F56]";
   const normalNav = "flex items-center  transition-colors";
   const { user, logOut } = useContext(AuthContext);
-  // -----------------------------------
 
   const [userStoreInfo, setUserStoreInfo] = useState([]);
   useEffect(() => {
@@ -30,10 +29,7 @@ function NavList() {
   }, [user?.email]);
   const store = userStoreInfo[0];
   const userRoll = store?.roll;
-  if (userRoll == "manager") {
-    console.log("yes");
-  }
-  //------------------------------
+
   console.log(user);
   const handleLogOut = () => {
     logOut()

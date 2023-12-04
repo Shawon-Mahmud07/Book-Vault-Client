@@ -89,7 +89,7 @@ const Login = () => {
         toast.success("Sign In successfully");
         console.log(credential);
         setTimeout(() => {
-          navigate(from, { replace: true });
+          navigate("/", { replace: true });
         }, 3000);
       })
       .catch((error) => {

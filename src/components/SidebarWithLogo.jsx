@@ -5,8 +5,6 @@ import {
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
   Accordion,
   AccordionHeader,
   AccordionBody,
@@ -16,17 +14,27 @@ import {
   ShoppingBagIcon,
   UserCircleIcon,
   Cog6ToothIcon,
-  InboxIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function SidebarWithLogo() {
-  const { user } = useContext(AuthContext);
-  const [open, setOpen] = React.useState(0);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Sign-out successful.");
+        Navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  const [open, setOpen] = React.useState(0);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
@@ -40,53 +48,14 @@ export function SidebarWithLogo() {
         </h2>
       </div>
       <List>
-        <Accordion
-          open={open === 1}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 1 ? "rotate-180" : ""
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader
-              onClick={() => handleOpen(1)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                Dashboard
-              </Typography>
-            </AccordionHeader>
+        <Link to="/admin/dashboard">
+          <ListItem>
+            <ListItemPrefix>
+              <PresentationChartBarIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Dashboard
           </ListItem>
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Analytics
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Reporting
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Projects
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
+        </Link>
         <Accordion
           open={open === 2}
           icon={
@@ -121,31 +90,19 @@ export function SidebarWithLogo() {
                   Add Product
                 </ListItem>
               </Link>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Products
-              </ListItem>
+              <Link to="/admin/dashboard/all-product">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Products
+                </ListItem>
+              </Link>
             </List>
           </AccordionBody>
         </Accordion>
         <hr className="my-2 border-blue-gray-50" />
-        <ListItem>
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="blue-gray"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-        </ListItem>
+
         <Link to="/">
           <ListItem>
             <ListItemPrefix>
@@ -161,7 +118,7 @@ export function SidebarWithLogo() {
           </ListItemPrefix>
           Settings
         </ListItem>
-        <ListItem>
+        <ListItem onClick={handleLogOut}>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

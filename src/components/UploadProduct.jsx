@@ -9,7 +9,9 @@ const UploadProduct = () => {
   const { user } = useContext(AuthContext);
   const [userStoreInfo, setUserStoreInfo] = useState([]);
   useEffect(() => {
-    fetch(`https://book-vault-server-theta.vercel.app/${user?.email}`)
+    fetch(
+      `https://book-vault-server-theta.vercel.app/user-store?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setUserStoreInfo(data));
   }, [user?.email]);
@@ -50,6 +52,8 @@ const UploadProduct = () => {
       quantity,
       saleCount,
       email,
+      product_Cost,
+      profit_Margin,
       discount,
       sellingPrice,
       addingDate,

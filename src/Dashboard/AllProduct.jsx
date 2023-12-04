@@ -18,6 +18,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const TABLE_HEAD = [
   "Product Image",
@@ -36,7 +37,35 @@ const AllProduct = () => {
       .then((data) => setAllBooks(data));
   }, []);
   console.log(allBooks);
-
+  const handleDeleteBtn = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Return it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://book-vault-server-theta.vercel.app/delete-product/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Product has been Deleted.", "success");
+              // const remaining = cardData.filter((data) => data._id !== _id);
+              // setCardData(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="w-full h-screen">
       <Card className="h-screen w-full">
@@ -132,8 +161,17 @@ const AllProduct = () => {
                         </Typography>
                       </td>
                       <td className={classes}>
-                        <div className=" ml-4 text-lg text-red-900">
-                          <FaRegTrashCan />
+                        <div
+                          onClick={() => {
+                            handleDeleteBtn(_id);
+                          }}
+                          className=" ml-4 text-lg text-red-900  cursor-pointer"
+                        >
+                          <Tooltip content="Delete Product">
+                            <IconButton variant="text">
+                              <FaRegTrashCan />
+                            </IconButton>
+                          </Tooltip>
                         </div>
                       </td>
 

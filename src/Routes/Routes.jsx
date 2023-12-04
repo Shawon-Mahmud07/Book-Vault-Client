@@ -11,6 +11,7 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import AddProduct from "../Dashboard/AddProduct";
 import UploadProduct from "../components/UploadProduct";
 import AllProduct from "../Dashboard/AllProduct";
+import Update from "../Dashboard/Update";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/dashboard/all-product",
         element: <AllProduct></AllProduct>,
+      },
+      {
+        path: "/admin/dashboard/update-product/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-vault-server-theta.vercel.app/product/${params.id}`
+          ),
       },
     ],
   },

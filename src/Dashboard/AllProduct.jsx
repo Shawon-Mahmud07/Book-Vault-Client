@@ -17,6 +17,7 @@ import {
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const TABLE_HEAD = [
   "Product Image",
@@ -88,7 +89,7 @@ const AllProduct = () => {
             </thead>
             <tbody>
               {allBooks.map(
-                ({ photo, product_Name, quantity, saleCount }, index) => {
+                ({ photo, product_Name, quantity, saleCount, _id }, index) => {
                   const isLast = index === allBooks.length - 1;
                   const classes = isLast
                     ? "p-4"
@@ -137,11 +138,13 @@ const AllProduct = () => {
                       </td>
 
                       <td className={classes}>
-                        <Tooltip content="Update Product">
-                          <IconButton variant="text">
-                            <PencilIcon className="h-4 w-4 text-green-900 " />
-                          </IconButton>
-                        </Tooltip>
+                        <Link to={`/admin/dashboard/update-product/${_id}`}>
+                          <Tooltip content="Update Product">
+                            <IconButton variant="text">
+                              <PencilIcon className="h-4 w-4 text-green-900 " />
+                            </IconButton>
+                          </Tooltip>
+                        </Link>
                       </td>
                     </tr>
                   );

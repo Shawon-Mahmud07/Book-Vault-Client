@@ -8,6 +8,12 @@ const Dashboard = () => {
       <h3 className="text-2xl mt-10 text-[#FF7F56] bg-gray-200 py-2 font-bold ">
         Welcome {user?.displayName}{" "}
       </h3>
+      <div>
+        <img
+          src="https://www.pngitem.com/pimgs/m/574-5744758_dashboard-png-transparent-png.png"
+          alt=""
+        />
+      </div>
     </div>
   );
 };

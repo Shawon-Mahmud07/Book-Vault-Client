@@ -3,13 +3,14 @@ import NavBar from "./Home/NavBar";
 import { Input } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 import Swal from "sweetalert2";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 
 const CreateStore = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,10 +20,12 @@ const CreateStore = () => {
     const photo = form.photo.value;
     const description = form.Description.value;
     const roll = "manager";
+    const email = form.email.value;
     const productLimit = 3;
     const storeInfo = {
       store_Name,
       owner_Name,
+      email,
       location,
       photo,
       roll,
@@ -50,6 +53,7 @@ const CreateStore = () => {
             confirmButtonText: "Close",
           });
           form.reset();
+          navigate("/admin/dashboard");
         }
       });
   };
@@ -87,7 +91,7 @@ const CreateStore = () => {
                         className="bg-[#FFFFFF]"
                         name="OwnerName"
                         label="Owner Name"
-                        defaultValue={user.displayName}
+                        defaultValue={user?.displayName}
                         readOnly
                       />
                     </div>
@@ -99,9 +103,9 @@ const CreateStore = () => {
                       <h2 className="mb-3 ">Email </h2>
                       <Input
                         className="bg-[#FFFFFF]"
-                        name="name"
+                        name="email"
                         label="Enter Store Name"
-                        defaultValue={user.email}
+                        defaultValue={user?.email}
                         readOnly
                       />
                     </div>

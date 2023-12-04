@@ -23,6 +23,6 @@ const PrivetRoute = ({ children }) => {
 };
 
 PrivetRoute.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.element,
 };
 export default PrivetRoute;

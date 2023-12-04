@@ -8,6 +8,8 @@ import DashboardLayout from "../Dashboard/DashboardLayout";
 import Dashboard from "../Dashboard/Dashboard";
 import CreateStore from "../pages/CreateStore";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import AddProduct from "../Dashboard/AddProduct";
+import UploadProduct from "../components/UploadProduct";
 
 const router = createBrowserRouter([
   {
@@ -38,23 +40,23 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "admin/dashboard",
+    path: "/admin/dashboard",
     element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path: "admin/dashboard",
+        path: "/admin/dashboard",
         element: <Dashboard></Dashboard>,
       },
       {
-        path: "admin/dashboard",
-        element: <></>,
+        path: "/admin/dashboard/add-product",
+        element: <AddProduct></AddProduct>,
       },
       {
-        path: "admin/dashboard",
-        element: <></>,
+        path: "/admin/dashboard/upload-product",
+        element: <UploadProduct></UploadProduct>,
       },
       {
-        path: "admin/dashboard",
+        path: "/admin/dashboard",
         element: <></>,
       },
     ],

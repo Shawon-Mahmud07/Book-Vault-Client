@@ -20,9 +20,22 @@ import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function SidebarWithLogo() {
   const { user, logOut } = useContext(AuthContext);
+  const [userStoreInfo, setUserStoreInfo] = useState([]);
+  useEffect(() => {
+    fetch(
+      `https://book-vault-server-theta.vercel.app/user-store?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setUserStoreInfo(data));
+  }, [user?.email]);
+  const store = userStoreInfo[0];
+  const ownerImg = store?.photo;
+  const storeName = store?.store_Name;
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -42,9 +55,9 @@ export function SidebarWithLogo() {
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 ">
       <div className="mb-2 flex items-center gap-4 p-4">
-        <img src={user?.photoURL} alt="brand" className="h-8 w-8" />
+        <img src={ownerImg} alt="brand" className="h-8 w-8" />
         <h2 className="font-cinzel text-xl" color="blue-gray">
-          {user?.displayName}
+          {storeName}
         </h2>
       </div>
       <List>

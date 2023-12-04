@@ -30,7 +30,7 @@ const TABLE_HEAD = [
 const AllProduct = () => {
   const [allBooks, setAllBooks] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/all-product")
+    fetch("https://book-vault-server-theta.vercel.app/all-product")
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
   }, []);

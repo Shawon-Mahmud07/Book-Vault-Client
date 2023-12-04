@@ -45,7 +45,7 @@ const AllProduct = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Return it!",
+      confirmButtonText: "Yes, Delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
@@ -59,8 +59,8 @@ const AllProduct = () => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Product has been Deleted.", "success");
-              // const remaining = cardData.filter((data) => data._id !== _id);
-              // setCardData(remaining);
+              const remaining = allBooks.filter((data) => data._id !== _id);
+              setAllBooks(remaining);
             }
           });
       }
@@ -117,7 +117,7 @@ const AllProduct = () => {
               </tr>
             </thead>
             <tbody>
-              {allBooks.map(
+              {allBooks?.map(
                 ({ photo, product_Name, quantity, saleCount, _id }, index) => {
                   const isLast = index === allBooks.length - 1;
                   const classes = isLast

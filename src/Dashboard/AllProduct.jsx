@@ -19,6 +19,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const TABLE_HEAD = [
   "Product Image",
@@ -30,13 +32,17 @@ const TABLE_HEAD = [
 ];
 
 const AllProduct = () => {
+  const { user } = useContext(AuthContext);
   const [allBooks, setAllBooks] = useState([]);
   useEffect(() => {
-    fetch("https://book-vault-server-theta.vercel.app/all-product")
+    fetch(
+      `https://book-vault-server-theta.vercel.app/store-products?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
-  }, []);
+  }, [user?.email]);
   console.log(allBooks);
+
   const handleDeleteBtn = (_id) => {
     Swal.fire({
       title: "Are you sure?",

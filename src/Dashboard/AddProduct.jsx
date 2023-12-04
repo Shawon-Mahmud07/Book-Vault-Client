@@ -2,14 +2,20 @@ import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { useContext } from "react";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
   const [allProduct, setAllProduct] = useState([]);
   useEffect(() => {
-    fetch("https://book-vault-server-theta.vercel.app/all-product")
+    fetch(
+      `https://book-vault-server-theta.vercel.app/store-products?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
-  }, []);
+  }, [user?.email]);
+
   console.log(allProduct);
   return (
     <div className="w-full h-screen ">

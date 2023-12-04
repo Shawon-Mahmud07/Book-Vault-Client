@@ -20,18 +20,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/create-store";
-
   const { userSignIn, handleGoogleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const from = "/admin/dashboard";
+
   const [passwordIcon, setShowPassword] = useState(false);
   const [captchaValue, setCaptchaValue] = useState("");
   const [disabled, setDisabled] = useState(true);

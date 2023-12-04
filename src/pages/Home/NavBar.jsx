@@ -11,11 +11,29 @@ import { Link, NavLink, Navigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function NavList() {
   const activeNav = " text-[#FF7F56]";
   const normalNav = "flex items-center  transition-colors";
   const { user, logOut } = useContext(AuthContext);
+  // -----------------------------------
+
+  const [userStoreInfo, setUserStoreInfo] = useState([]);
+  useEffect(() => {
+    fetch(
+      `https://book-vault-server-theta.vercel.app/user-store?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setUserStoreInfo(data));
+  }, [user?.email]);
+  const store = userStoreInfo[0];
+  const userRoll = store?.roll;
+  if (userRoll == "manager") {
+    console.log("yes");
+  }
+  //------------------------------
   console.log(user);
   const handleLogOut = () => {
     logOut()
@@ -41,28 +59,36 @@ function NavList() {
           HOME
         </NavLink>
       </Typography>
-      <Typography
-        as="li"
-        className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
-      >
-        <NavLink
-          to="/create-store"
-          className={({ isActive }) => (isActive ? activeNav : normalNav)}
-        >
-          CREATE STORE
-        </NavLink>
-      </Typography>
-      <Typography
-        as="li"
-        className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
-      >
-        <NavLink
-          to="/admin/dashboard"
-          className="flex items-center  transition-colors"
-        >
-          DASHBOARD
-        </NavLink>
-      </Typography>
+      {userRoll == "manager" ? (
+        <>
+          <Typography
+            as="li"
+            className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+          >
+            <NavLink
+              to="/admin/dashboard"
+              className="flex items-center  transition-colors"
+            >
+              DASHBOARD
+            </NavLink>
+          </Typography>
+        </>
+      ) : (
+        <>
+          <Typography
+            as="li"
+            className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
+          >
+            <NavLink
+              to="/create-store"
+              className={({ isActive }) => (isActive ? activeNav : normalNav)}
+            >
+              CREATE STORE
+            </NavLink>
+          </Typography>
+        </>
+      )}
+
       <Typography
         as="li"
         className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"

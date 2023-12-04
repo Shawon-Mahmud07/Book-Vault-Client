@@ -45,7 +45,10 @@ function NavList() {
         as="li"
         className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
-        <NavLink to="/contact" className="flex items-center  transition-colors">
+        <NavLink
+          to="/create-store"
+          className={({ isActive }) => (isActive ? activeNav : normalNav)}
+        >
           CREATE STORE
         </NavLink>
       </Typography>
@@ -53,9 +56,12 @@ function NavList() {
         as="li"
         className="px-1  md:text-sm xl:text-lg  lg:font-extrabold font-Inter"
       >
-        <a href="#" className="flex items-center  transition-colors">
+        <NavLink
+          to="/admin/dashboard"
+          className="flex items-center  transition-colors"
+        >
           DASHBOARD
-        </a>
+        </NavLink>
       </Typography>
       <Typography
         as="li"

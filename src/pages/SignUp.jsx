@@ -32,7 +32,7 @@ const SignUp = () => {
         if (user) {
           toast.success("User create successfully!");
           setTimeout(() => {
-            navigate("/");
+            navigate("/create-store");
           }, 2000);
         }
         console.log(user);

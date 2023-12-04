@@ -9,7 +9,7 @@ const UploadProduct = () => {
   const { user } = useContext(AuthContext);
   const [userStoreInfo, setUserStoreInfo] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/user-store/${user?.email}`)
+    fetch(`https://book-vault-server-theta.vercel.app/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserStoreInfo(data));
   }, [user?.email]);
@@ -59,7 +59,7 @@ const UploadProduct = () => {
     console.log(addProductInfo);
 
     // send data to the server
-    fetch("http://localhost:5000/upload-product", {
+    fetch("https://book-vault-server-theta.vercel.app/upload-product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

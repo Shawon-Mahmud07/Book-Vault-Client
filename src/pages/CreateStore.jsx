@@ -35,7 +35,7 @@ const CreateStore = () => {
     console.log(storeInfo);
 
     // send data to the server
-    fetch("http://localhost:5000/create-store", {
+    fetch("https://book-vault-server-theta.vercel.app/create-store", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -21,7 +21,7 @@ import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useEffect } from "react";
-import { HiHome } from "react-icons/hi";
+import { HiHome, HiOutlineCalendar } from "react-icons/hi";
 
 export function SidebarWithLogo() {
   const { user, logOut } = useContext(AuthContext);
@@ -133,7 +133,7 @@ export function SidebarWithLogo() {
               className="border-b-0 p-3"
             >
               <ListItemPrefix>
-                <ShoppingBagIcon className="h-5 w-5" />
+                <HiOutlineCalendar />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
                 Sales-Collection
@@ -150,7 +150,7 @@ export function SidebarWithLogo() {
                   All Product
                 </ListItem>
               </Link>
-              <Link to="">
+              <Link to="/admin/dashboard/check-out">
                 <ListItem>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />

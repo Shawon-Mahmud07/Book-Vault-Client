@@ -13,6 +13,7 @@ import UploadProduct from "../components/UploadProduct";
 import AllProduct from "../Dashboard/AllProduct";
 import Update from "../Dashboard/Update";
 import SalesAllProduct from "../Dashboard/SalesAllProduct";
+import CheckOut from "../Dashboard/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/dashboard/sales-all-product",
         element: <SalesAllProduct></SalesAllProduct>,
+      },
+      {
+        path: "/admin/dashboard/check-out",
+        element: <CheckOut></CheckOut>,
       },
       {
         path: "/admin/dashboard/update-product/:id",

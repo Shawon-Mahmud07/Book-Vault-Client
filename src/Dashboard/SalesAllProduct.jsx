@@ -18,6 +18,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const TABLE_HEAD = [
   "ID",
@@ -41,6 +43,45 @@ const SalesAllProduct = () => {
       .then((data) => setAllBooks(data));
   }, [user?.email]);
   console.log(allBooks);
+
+  const handleAddForCheckOut = (
+    _id,
+    photo,
+    product_Name,
+    quantity,
+    discount,
+    sellingPrice
+  ) => {
+    const addForCheckOut = {
+      _id,
+      photo,
+      product_Name,
+      quantity,
+      discount,
+      sellingPrice,
+    };
+    console.log(addForCheckOut);
+    // send data to the server
+    fetch("https://book-vault-server-theta.vercel.app/check-out", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addForCheckOut),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "Add for Check Out Successfully",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+        }
+      });
+  };
   return (
     <div className="w-full h-screen overflow-x-scroll">
       <Card className="h-screen w-full">
@@ -166,22 +207,32 @@ const SalesAllProduct = () => {
                       </td>
 
                       <td className={classes}>
-                        {/* <Link to={`/admin/dashboard/update-product/${_id}`}> */}
-                        <div className=" -ml-8">
+                        <div
+                          onClick={() => {
+                            handleAddForCheckOut(
+                              _id,
+                              photo,
+                              product_Name,
+                              quantity,
+                              discount,
+                              sellingPrice
+                            );
+                          }}
+                          className=" -ml-8"
+                        >
                           <Button className="bg-[#d45c34]" size="sm">
                             Add For Check-out
                           </Button>
                         </div>
-                        {/* </Link> */}
                       </td>
                       <td className={classes}>
-                        {/* <Link to={`/admin/dashboard/update-product/${_id}`}> */}
-                        <div className=" -ml-5">
-                          <Button className="bg-[#d45c34] " size="sm">
-                            Check-out
-                          </Button>
-                        </div>
-                        {/* </Link> */}
+                        <Link to="/admin/dashboard/check-out">
+                          <div className=" -ml-5">
+                            <Button className="bg-[#d45c34] " size="sm">
+                              Check-out
+                            </Button>
+                          </div>
+                        </Link>
                       </td>
                     </tr>
                   );

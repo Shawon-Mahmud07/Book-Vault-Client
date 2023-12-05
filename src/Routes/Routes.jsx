@@ -12,6 +12,7 @@ import AddProduct from "../Dashboard/AddProduct";
 import UploadProduct from "../components/UploadProduct";
 import AllProduct from "../Dashboard/AllProduct";
 import Update from "../Dashboard/Update";
+import SalesAllProduct from "../Dashboard/SalesAllProduct";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/dashboard/all-product",
         element: <AllProduct></AllProduct>,
+      },
+      {
+        path: "/admin/dashboard/sales-all-product",
+        element: <SalesAllProduct></SalesAllProduct>,
       },
       {
         path: "/admin/dashboard/update-product/:id",

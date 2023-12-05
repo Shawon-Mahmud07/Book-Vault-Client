@@ -12,7 +12,6 @@ import {
 import {
   PresentationChartBarIcon,
   ShoppingBagIcon,
-  UserCircleIcon,
   Cog6ToothIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
@@ -22,6 +21,7 @@ import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useEffect } from "react";
+import { HiHome } from "react-icons/hi";
 
 export function SidebarWithLogo() {
   const { user, logOut } = useContext(AuthContext);
@@ -53,7 +53,7 @@ export function SidebarWithLogo() {
   };
 
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 ">
+    <Card className="h-[calc(100vh-2rem)]  w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 ">
       <div className="mb-2 flex items-center gap-4 p-4">
         <img src={ownerImg} alt="brand" className="h-8 w-8" />
         <h2 className="font-cinzel text-xl" color="blue-gray">
@@ -69,6 +69,7 @@ export function SidebarWithLogo() {
             Dashboard
           </ListItem>
         </Link>
+        {/* Product Management */}
         <Accordion
           open={open === 2}
           icon={
@@ -114,17 +115,61 @@ export function SidebarWithLogo() {
             </List>
           </AccordionBody>
         </Accordion>
+        {/* Sales-Collection */}
+        <Accordion
+          open={open === 3}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${
+                open === 2 ? "rotate-180" : ""
+              }`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={open === 3}>
+            <AccordionHeader
+              onClick={() => handleOpen(3)}
+              className="border-b-0 p-3"
+            >
+              <ListItemPrefix>
+                <ShoppingBagIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                Sales-Collection
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1">
+            <List className="p-0">
+              <Link to="/admin/dashboard/sales-all-product">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  All Product
+                </ListItem>
+              </Link>
+              <Link to="">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Check-Out
+                </ListItem>
+              </Link>
+            </List>
+          </AccordionBody>
+        </Accordion>
         <hr className="my-2 border-blue-gray-50" />
-
         <Link to="/">
           <ListItem>
             <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
+              <HiHome className="text-xl" />
             </ListItemPrefix>
             Home
           </ListItem>
         </Link>
-
         <ListItem>
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />

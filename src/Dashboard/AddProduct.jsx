@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
   const [allProduct, setAllProduct] = useState([]);
+
   useEffect(() => {
     fetch(
       `https://book-vault-server-theta.vercel.app/store-products?email=${user?.email}`
@@ -34,11 +35,20 @@ const AddProduct = () => {
                 </span>{" "}
                 Product Added
               </h2>
-              <Link to="/admin/dashboard/upload-product">
-                <Button className=" bg-[#FF7F56]  font-semibold  text-white">
+              {allProduct?.length > 2 ? (
+                <Button
+                  disabled
+                  className="  bg-[#FF7F56]  font-semibold  text-white"
+                >
                   Add a Product
                 </Button>
-              </Link>
+              ) : (
+                <Link to="/admin/dashboard/upload-product">
+                  <Button className="  bg-[#FF7F56]  font-semibold  text-white">
+                    Add a Product
+                  </Button>
+                </Link>
+              )}
             </div>
             <div className=" flex justify-center mt-5 w-full">
               <img

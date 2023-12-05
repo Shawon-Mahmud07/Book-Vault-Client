@@ -43,7 +43,7 @@ const SalesAllProduct = () => {
       .then((data) => setAllBooks(data));
   }, [user?.email]);
   console.log(allBooks);
-
+  const email = user?.email;
   const handleAddForCheckOut = (
     _id,
     photo,
@@ -59,6 +59,7 @@ const SalesAllProduct = () => {
       quantity,
       discount,
       sellingPrice,
+      email,
     };
     console.log(addForCheckOut);
     // send data to the server
@@ -151,7 +152,7 @@ const SalesAllProduct = () => {
                     : "p-4 border-b border-blue-gray-50";
 
                   return (
-                    <tr key={index}>
+                    <tr key={_id}>
                       <td className={classes}>
                         <Typography
                           variant="small"

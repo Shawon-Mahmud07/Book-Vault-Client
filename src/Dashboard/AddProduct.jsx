@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,9 @@ const AddProduct = () => {
   console.log(allProduct);
   return (
     <div className="w-full h-screen ">
+      <Helmet>
+        <title>Book-Vault | Add Product</title>
+      </Helmet>
       {allProduct?.length > 0 ? (
         <>
           <div>

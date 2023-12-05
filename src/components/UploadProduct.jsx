@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { Form } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const UploadProduct = () => {
   const { user } = useContext(AuthContext);
@@ -86,6 +87,9 @@ const UploadProduct = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Book-Vault | Add Product</title>
+      </Helmet>
       <div>
         <div>
           <div className="w-full shadow-xl md:max-w-4xl mx-auto  border md:p-10 bg-[#f6f6f6] rounded-md ">

@@ -9,6 +9,24 @@ import { Helmet } from "react-helmet-async";
 const UploadProduct = () => {
   const { user } = useContext(AuthContext);
   const [userStoreInfo, setUserStoreInfo] = useState([]);
+  const [allProduct, setAllProduct] = useState([]);
+
+  const fetchData = () => {
+    fetch(
+      `https://book-vault-server-theta.vercel.app/store-products?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setAllProduct(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    fetchData();
+  });
+
+  const handleRefetch = () => {
+    fetchData();
+  };
 
   useEffect(() => {
     fetch(
@@ -197,13 +215,24 @@ const UploadProduct = () => {
                 </div>
               </div>
               <div className="px-4 disabled">
-                <Button
-                  type="submit"
-                  className="bg-[#FF7F56] text-white "
-                  fullWidth
-                >
-                  Add Product
-                </Button>
+                {allProduct?.length > 2 ? (
+                  <Button
+                    disabled
+                    className="bg-[#FF7F56] text-white "
+                    fullWidth
+                  >
+                    Add Product
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleRefetch}
+                    type="submit"
+                    className="bg-[#FF7F56] text-white "
+                    fullWidth
+                  >
+                    Add Product
+                  </Button>
+                )}
               </div>
             </Form>
           </div>

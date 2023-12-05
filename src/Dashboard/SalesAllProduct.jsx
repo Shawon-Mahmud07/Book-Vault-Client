@@ -27,6 +27,7 @@ const TABLE_HEAD = [
   "Discount",
   "Selling Price",
   "",
+  "",
 ];
 
 const SalesAllProduct = () => {
@@ -41,13 +42,13 @@ const SalesAllProduct = () => {
   }, [user?.email]);
   console.log(allBooks);
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen overflow-x-scroll">
       <Card className="h-screen w-full">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
             <div>
               <Typography variant="h5" color="blue-gray">
-                Product Section
+                Product Sales Section
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
                 These are details of your product
@@ -122,7 +123,7 @@ const SalesAllProduct = () => {
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div>
-                            <img className="w-24 h-28" src={photo} alt="" />
+                            <img className="w-18 h-24" src={photo} alt="" />
                           </div>
                         </div>
                       </td>
@@ -140,7 +141,7 @@ const SalesAllProduct = () => {
                         <Typography
                           variant="h5"
                           color="blue-gray"
-                          className="font-normal font-serif pl-4"
+                          className="font-normal font-serif"
                         >
                           {quantity}
                         </Typography>
@@ -149,7 +150,7 @@ const SalesAllProduct = () => {
                         <Typography
                           variant="h5"
                           color="blue-gray"
-                          className="font-medium font-serif pl-8"
+                          className="font-medium font-serif "
                         >
                           {discount}%
                         </Typography>
@@ -158,7 +159,7 @@ const SalesAllProduct = () => {
                         <Typography
                           variant="h5"
                           color="blue-gray"
-                          className="font-medium font-serif pl-8"
+                          className="font-medium font-serif "
                         >
                           ${sellingPrice}
                         </Typography>
@@ -166,8 +167,17 @@ const SalesAllProduct = () => {
 
                       <td className={classes}>
                         {/* <Link to={`/admin/dashboard/update-product/${_id}`}> */}
-                        <div>
+                        <div className=" -ml-8">
                           <Button className="bg-[#d45c34]" size="sm">
+                            Add For Check-out
+                          </Button>
+                        </div>
+                        {/* </Link> */}
+                      </td>
+                      <td className={classes}>
+                        {/* <Link to={`/admin/dashboard/update-product/${_id}`}> */}
+                        <div className=" -ml-5">
+                          <Button className="bg-[#d45c34] " size="sm">
                             Check-out
                           </Button>
                         </div>

@@ -67,7 +67,7 @@ const Update = () => {
     <div>
       <div className="w-full shadow-xl md:max-w-4xl mx-auto  border md:p-10 bg-[#f6f6f6] rounded-md ">
         <div className="text-center">
-          <h2 className="text-2xl font-cinzel font-semibold">Upload Product</h2>
+          <h2 className="text-2xl font-cinzel font-semibold">Update Product</h2>
         </div>
         <Form onSubmit={handleFormSubmit} className="font-Inter">
           <div className="my-5">

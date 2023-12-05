@@ -20,6 +20,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const TABLE_HEAD = [
   "ID",
@@ -85,6 +86,9 @@ const SalesAllProduct = () => {
   };
   return (
     <div className="w-full h-screen overflow-x-scroll">
+      <Helmet>
+        <title>Book-Vault | All Product</title>
+      </Helmet>
       <Card className="h-screen w-full">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">

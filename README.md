@@ -23,22 +23,27 @@ specific functionalities to facilitate a seamless and efficient user experience.
 **Product Management**
 
 - Add, manage, delete, view, and search products by name. _Offers and Coupon
-  Management:_
+  Management:
 
 - Add discounts to all products.
-- Create coupons for a specified period. _Payment and Subscription:_
+- Create coupons for a specified period.
+*Payment and Subscription:*
 
-- Increase product adding limit through secure card payments. _Sale Collection:_
+- Increase product adding limit through secure card payments.
+
+*Sale Collection:*
 
 - View product tables, search products.
 - Add products to the cart for the current customer.
 - Mark sales as paid, generate invoices, and automatically update the database.
-  _Sales Summary:_
+*Sales Summary:*
 
 - View total profit, total sales, and total investment of the shop.
-- Access sales history. _Logged-User:_
+- Access sales history.
+- *Logged-User:*
 
-- Register on the system. _Shop-Creation:_
+- Register on the system.
+*Shop-Creation:*
 - Create one shop.
 - Become a shop-manager for an existing shop.
 
@@ -47,24 +52,29 @@ specific functionalities to facilitate a seamless and efficient user experience.
 **User Authentication:**
 
 - Secure user registration and login.
-- JWT-based authentication for protected routes. _Shop Management:_
+- JWT-based authentication for protected routes.
+*Shop Management:*
 
 - Allow logged-in users to create a shop.
 - Provide System-Admins with the ability to view and manage all registered
-  shops. _Product Management:_
+  shops.
+*Product Management:*
 
 - Enable Shop-Managers to efficiently handle products with CRUD operations.
-- Intuitive product search functionality. _Offers and Coupon Management:_
+- Intuitive product search functionality.
+*Offers and Coupon Management:*
 
 - Implement a straightforward system for adding discounts to products.
-- Allow Shop-Managers to create time-bound coupons. _Payment and Subscription:_
+- Allow Shop-Managers to create time-bound coupons.
+*Payment and Subscription:*
 
 - Integrate secure card payments for Shop-Managers to extend their product
-  adding limit. _Sale Collection:_
+  adding limit.
+*Sale Collection:*
 
 - Provide Shop-Managers with tools to manage sales seamlessly.
-- Real-time updates to the database upon successful transactions. _Sales
-  Summary:_
+- Real-time updates to the database upon successful transactions.
+*Sales Summary:*
 
 - Generate detailed insights into the shop's performance.
 - Historical data to track sales over time.
